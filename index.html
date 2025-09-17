@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インターバルタイマー</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-200 font-sans flex items-center justify-center min-h-screen p-4">
+
+    <div class="container bg-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl w-full max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-white mb-6">インターバルタイマー</h1>
+
+        <!-- Timer Display with Circular Progress Bar -->
+        <div class="timer-display flex flex-col items-center justify-center my-8">
+            <div class="flex items-end justify-center gap-2 sm:gap-6 w-full">
+                <!-- Cycle Display -->
+                <div class="text-center w-24 sm:w-28">
+                    <span class="text-sm font-semibold text-slate-400">CYCLE</span>
+                    <div class="font-bold text-white leading-none flex items-baseline justify-center gap-1">
+                        <span id="current-cycle-number" class="text-5xl sm:text-6xl">1</span>
+                        <span class="text-2xl sm:text-3xl text-slate-400">/</span>
+                        <span id="total-cycle-number" class="text-2xl sm:text-3xl text-slate-400">1</span>
+                    </div>
+                </div>
+
+                <!-- Main Timer -->
+                <div class="relative w-48 h-48 sm:w-64 sm:h-64">
+                    <svg class="w-full h-full" viewBox="0 0 100 100">
+                        <circle class="text-slate-700" stroke-width="8" cx="50" cy="50" r="45" fill="transparent" stroke="currentColor"></circle>
+                        <circle id="progress-ring" class="text-indigo-500 progress-ring-circle"
+                            stroke-width="8" cx="50" cy="50" r="45" fill="transparent"
+                            stroke="currentColor" stroke-linecap="round" transform="rotate(-90 50 50)">
+                        </circle>
+                    </svg>
+                    <div id="countdown" class="absolute inset-0 flex items-center justify-center text-5xl sm:text-6xl font-mono font-bold text-white">
+                        00:00
+                    </div>
+                </div>
+                 <div class="w-24 sm:w-28"></div>
+            </div>
+            <p id="status-text" class="text-lg text-slate-400 mt-4 h-6">準備</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons flex justify-center gap-4 mb-8">
+            <button id="start-button" class="flex items-center justify-center gap-2 w-36 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-all text-lg">
+                <i data-lucide="play" id="start-icon"></i>
+                <span id="start-text">開始</span>
+            </button>
+            <button id="pause-button" class="flex items-center justify-center gap-2 w-36 bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-3 px-4 rounded-lg transition-all text-lg">
+                <i data-lucide="pause" id="pause-icon"></i>
+                <span id="pause-text">一時停止</span>
+            </button>
+             <button id="reset-button" class="flex items-center justify-center gap-2 w-36 bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-4 rounded-lg transition-all text-lg">
+                <i data-lucide="rotate-cw"></i>
+                <span>リセット</span>
+            </button>
+        </div>
+        
+        <!-- Add Interval Controls -->
+        <div class="controls bg-slate-700/50 p-4 rounded-lg mb-4">
+             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3">
+                 <div class="time-inputs flex items-center gap-2">
+                     <input type="number" id="minutes-input" value="0" min="0" class="bg-slate-900 w-20 p-2 rounded-md text-center text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                     <span class="text-lg font-semibold text-slate-400">:</span>
+                     <input type="number" id="seconds-input" value="30" min="0" max="59" class="bg-slate-900 w-20 p-2 rounded-md text-center text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                 </div>
+                 <button id="add-button" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-5 rounded-lg transition-colors">
+                     <i data-lucide="plus"></i>
+                     <span>追加</span>
+                 </button>
+             </div>
+             <div class="quick-add-buttons grid grid-cols-4 gap-2">
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="0" data-seconds="5">5秒</button>
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="0" data-seconds="10">10秒</button>
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="0" data-seconds="15">15秒</button>
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="0" data-seconds="20">20秒</button>
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="0" data-seconds="30">30秒</button>
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="1" data-seconds="0">1分</button>
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="3" data-seconds="0">3分</button>
+                 <button class="quick-add bg-slate-600 hover:bg-slate-500 text-white py-2 rounded-md transition-colors" data-minutes="5" data-seconds="0">5分</button>
+             </div>
+        </div>
+
+        <div id="message-box" class="text-red-400 text-center min-h-[1.5rem] mb-4"></div>
+
+        <!-- Interval List -->
+        <div class="interval-list-container space-y-3 mb-6">
+            <h3 class="text-xl font-semibold text-center text-white sticky top-0 bg-slate-800 py-2">設定リスト</h3>
+            <ul id="interval-list" class="space-y-2">
+                <!-- Intervals will be dynamically added here -->
+            </ul>
+        </div>
+        
+        <!-- Cycle Settings -->
+        <div class="mb-6">
+            <h3 class="text-xl font-semibold text-center mb-3">サイクル設定</h3>
+            <div class="flex items-center justify-center gap-4 bg-slate-700/50 p-4 rounded-lg">
+                <label for="cycle-count-input" class="font-semibold text-lg">回数:</label>
+                <input type="number" id="cycle-count-input" value="1" min="1" class="bg-slate-900 w-24 p-2 rounded-md text-center text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+        </div>
+
+        <!-- Sound Selection -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div>
+                <h3 class="text-xl font-semibold text-center mb-3">インターバル音</h3>
+                <div id="interval-sound-selector" class="sound-choice grid grid-cols-2 gap-2">
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="interval-sound-choice" value="pattern1" checked>チャイム
+                    </label>
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="interval-sound-choice" value="pattern2">アルペジオ
+                    </label>
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="interval-sound-choice" value="pattern3">シンフォニック
+                    </label>
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="interval-sound-choice" value="pattern4">ホイッスル
+                    </label>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-center mb-3">サイクル音</h3>
+                <div id="cycle-sound-selector" class="sound-choice grid grid-cols-2 gap-2">
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="cycle-sound-choice" value="pattern1">チャイム
+                    </label>
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="cycle-sound-choice" value="pattern2">アルペジオ
+                    </label>
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="cycle-sound-choice" value="pattern3" checked>シンフォニック
+                    </label>
+                    <label class="p-3 bg-slate-700 rounded-lg text-center border-2 border-transparent">
+                        <input type="radio" name="cycle-sound-choice" value="pattern4">ホイッスル
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>
