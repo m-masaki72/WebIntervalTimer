@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>インターバルタイマー</title>
-    <!-- Tailwind CSS for styling -->
+
+    <link rel="manifest" href="/WebIntervalTimer/manifest.json">
+    <link rel="icon" href="/WebIntervalTimer/icon-192x192.png" type="image/png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    
+    <script src="script.js" defer></script>
+    
     <script>
-        // Tailwind CSS Configuration
         tailwind.config = {
             theme: {
                 extend: {
@@ -28,6 +30,7 @@
         };
     </script>
 </head>
+
 <body class="bg-slate-900 text-slate-200 font-sans flex items-center justify-center min-h-screen p-4">
 
     <div class="container bg-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl w-full max-w-2xl mx-auto">
@@ -162,8 +165,5 @@
             </div>
         </div>
     </div>
-    
-    <!-- Custom JavaScript -->
-    <script src="script.js" defer></script>
 </body>
 </html>
