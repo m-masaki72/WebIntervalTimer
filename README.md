@@ -17,7 +17,7 @@
 ## 🚀 デモ
 以下のリンクから、実際にタイマーを操作していただけます。
 
-https://m-masaki72.github.io/WebIntervalTimer/
+https://interval-timer.morilab-garage.com/
 
 ## 使い方
 

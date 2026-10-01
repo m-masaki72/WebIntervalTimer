@@ -2,7 +2,7 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     // [修正] パスを修正
-    navigator.serviceWorker.register('/WebIntervalTimer/sw.js').then(registration => {
+    navigator.serviceWorker.register('./sw.js').then(registration => {
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, err => {
       console.log('ServiceWorker registration failed: ', err);

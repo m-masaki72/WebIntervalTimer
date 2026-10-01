@@ -1,15 +1,15 @@
 // キャッシュするファイルの名前とバージョンを定義
-const CACHE_NAME = 'interval-timer-cache-v2';
+const CACHE_NAME = 'interval-timer-cache-v3';
 
 // キャッシュするファイルのリスト
 const urlsToCache = [
-  '/WebIntervalTimer/',
-  '/WebIntervalTimer/index.html',
-  '/WebIntervalTimer/style.css',
-  '/WebIntervalTimer/script.js',
-  '/WebIntervalTimer/manifest.json',
-  '/WebIntervalTimer/icon-512x512.png',
-  '/WebIntervalTimer/icon-192x192.png',
+  './',
+  './index.html',
+  './style.css',
+  './script.js',
+  './manifest.json',
+  './icon-512x512.png',
+  './icon-192x192.png',
 ];
 
 // 1. installイベント: サービスワーカーがインストールされるときに実行
