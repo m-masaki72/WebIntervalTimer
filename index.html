@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>インターバルタイマー</title>
+    <title>インターバルタイマー - 筋トレ・ポモドーロに使える無料Webタイマー</title>
 
     <link rel="manifest" href="./manifest.json">
     <link rel="icon" href="./icon-192x192.png" type="image/png">
@@ -29,12 +29,12 @@
             },
         };
     </script>
-    <meta name="description" content="インストール不要のブラウザ完結インターバルタイマー。ラップ・サイクル数をカスタマイズ可能なPWA。">
+    <meta name="description" content="筋トレ・ポモドーロ・勉強に使えるブラウザ完結のインターバルタイマー。複数のインターバルの組み合わせやサイクル数、通知音を自由に設定できます。PWA対応でオフラインでも動作。無料・登録不要。">
     <link rel="canonical" href="https://interval-timer.morilab-garage.com/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://interval-timer.morilab-garage.com/">
     <meta property="og:title" content="インターバルタイマー">
-    <meta property="og:description" content="インストール不要のブラウザ完結インターバルタイマー。ラップ・サイクル数をカスタマイズ可能なPWA。">
+    <meta property="og:description" content="筋トレ・ポモドーロ・勉強に使えるブラウザ完結のインターバルタイマー。複数のインターバルの組み合わせやサイクル数、通知音を自由に設定できます。PWA対応でオフラインでも動作。無料・登録不要。">
     <meta property="og:image" content="https://morilab-garage.com/screenshots/web-interval-timer.png">
     <meta property="og:locale" content="ja_JP">
     <meta name="twitter:card" content="summary_large_image">
@@ -44,7 +44,7 @@
       "@type": "WebApplication",
       "name": "インターバルタイマー",
       "url": "https://interval-timer.morilab-garage.com/",
-      "description": "インストール不要のブラウザ完結インターバルタイマー。ラップ・サイクル数をカスタマイズ可能なPWA。",
+      "description": "筋トレ・ポモドーロ・勉強に使えるブラウザ完結のインターバルタイマー。複数のインターバルの組み合わせやサイクル数、通知音を自由に設定できます。PWA対応でオフラインでも動作。無料・登録不要。",
       "image": "https://morilab-garage.com/screenshots/web-interval-timer.png",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Web",
@@ -64,10 +64,10 @@
     </script>
 </head>
 
-<body class="bg-slate-900 text-slate-200 font-sans flex items-center justify-center min-h-screen p-4">
+<body class="bg-slate-900 text-slate-200 font-sans flex flex-col items-center justify-center min-h-screen p-4">
 
     <div class="container bg-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl w-full max-w-2xl mx-auto">
-        <h1 class="text-3xl font-bold text-center text-white mb-6">インターバルタイマー</h1>
+        <h1 class="text-2xl sm:text-3xl font-bold text-center text-white mb-6">インターバルタイマー</h1>
 
         <!-- Timer Display with Circular Progress Bar -->
         <div class="timer-display flex flex-col items-center justify-center my-8">
@@ -101,16 +101,16 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="action-buttons flex justify-center gap-4 mb-8">
-            <button id="start-button" class="flex items-center justify-center gap-2 w-36 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-4 rounded-lg transition-all text-lg">
+        <div class="action-buttons flex justify-center gap-2 sm:gap-4 mb-8">
+            <button id="start-button" class="flex items-center justify-center gap-1 sm:gap-2 flex-1 sm:flex-none sm:w-36 whitespace-nowrap bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-2 sm:px-4 rounded-lg transition-all text-base sm:text-lg">
                 <i data-lucide="play" id="start-icon"></i>
                 <span id="start-text">開始</span>
             </button>
-            <button id="pause-button" class="flex items-center justify-center gap-2 w-36 bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-3 px-4 rounded-lg transition-all text-lg">
+            <button id="pause-button" class="flex items-center justify-center gap-1 sm:gap-2 flex-1 sm:flex-none sm:w-36 whitespace-nowrap bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-3 px-2 sm:px-4 rounded-lg transition-all text-base sm:text-lg">
                 <i data-lucide="pause" id="pause-icon"></i>
                 <span id="pause-text">一時停止</span>
             </button>
-             <button id="reset-button" class="flex items-center justify-center gap-2 w-36 bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-4 rounded-lg transition-all text-lg">
+             <button id="reset-button" class="flex items-center justify-center gap-1 sm:gap-2 flex-1 sm:flex-none sm:w-36 whitespace-nowrap bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-2 sm:px-4 rounded-lg transition-all text-base sm:text-lg">
                 <i data-lucide="rotate-cw"></i>
                 <span>リセット</span>
             </button>
@@ -198,5 +198,37 @@
             </div>
         </div>
     </div>
+<style>
+.mlg-about{box-sizing:border-box;max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 2rem;font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.85;color:inherit;text-align:left}
+.mlg-about *{box-sizing:border-box}
+.mlg-about h2{font-size:1.35rem;line-height:1.4;margin:0 0 .75rem;font-weight:700}
+.mlg-about h3{font-size:1.05rem;margin:1.75rem 0 .5rem;font-weight:700}
+.mlg-about p{margin:.5rem 0}
+.mlg-about ul,.mlg-about ol{margin:.5rem 0;padding-left:1.4em}
+.mlg-about ul{list-style:disc}
+.mlg-about ol{list-style:decimal}
+.mlg-about li{margin:.2rem 0}
+.mlg-about dt{font-weight:700;margin-top:.75rem}
+.mlg-about dd{margin:.2rem 0 0}
+.mlg-about a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.mlg-credit{margin-top:2rem;padding-top:1rem;border-top:1px solid currentColor;border-top-color:color-mix(in srgb,currentColor 25%,transparent);font-size:13px;opacity:.85;display:flex;flex-wrap:wrap;gap:.25rem 1rem}
+#mlg-about-dialog{width:min(92vw,720px);max-height:85dvh;padding:0;border:0;border-radius:16px;background:#fff;color:#1a1a1a;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+#mlg-about-dialog::backdrop{background:rgba(0,0,0,.55)}
+#mlg-about-dialog .mlg-about{padding-top:1.5rem}
+.mlg-close{position:sticky;top:0;float:right;margin:.5rem .5rem 0 0;width:44px;height:44px;border:0;border-radius:50%;background:#eee;color:#1a1a1a;font-size:22px;cursor:pointer}
+.mlg-open{position:fixed;z-index:2147483000;width:44px;height:44px;padding:0;border:0;border-radius:50%;font-size:20px !important;background:rgba(0,0,0,.6);color:#fff;font:600 13px/1 system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(4px)}
+.mlg-open:focus-visible,.mlg-close:focus-visible{outline:3px solid #27ff0b;outline-offset:2px}
+</style>
+<section class="mlg-about" aria-labelledby="mlg-about-title">
+<h2 id="mlg-about-title">インターバルタイマーについて</h2>
+<p>筋トレ・ポモドーロ・勉強など、複数のインターバルを組み合わせたトレーニングメニューをブラウザだけで管理できるタイマーです。</p><p>インターバル音とサイクル音を別々に設定でき、円形のプログレスバーで残り時間を直感的に把握できます。ホーム画面にインストールすれば、ジムや外出先でもオフラインで動作します。</p>
+<h3>使い方</h3>
+<ol><li>インターバル（ラップ）の時間を追加して、メニューを組み立てます。</li><li>繰り返すサイクル数と、インターバル音・サイクル音を選びます。</li><li>スタートボタンを押すと計測が始まり、区切りごとに通知音が鳴ります。</li></ol>
+<h3>主な機能・特徴</h3>
+<ul><li>複数インターバルの組み合わせとサイクル数の設定</li><li>インターバル音・サイクル音を個別に選択</li><li>円形プログレスバーで残り時間を表示</li><li>Web Audio API で通知音を生成（音声ファイル不要）</li><li>PWA対応：ホーム画面に追加してオフライン動作</li></ul>
+<h3>よくある質問</h3>
+<dl><dt>無料で使えますか？</dt><dd>はい。無料で、会員登録やアプリのインストールも不要です。ブラウザでこのページを開くだけで使えます。</dd><dt>オフラインでも使えますか？</dt><dd>はい。一度開いたあとはホーム画面に追加することで、通信がない場所でも動作します。</dd></dl>
+<p class="mlg-credit"><span>制作: <a href="https://morilab-garage.com/">MasakiMori（Mori Lab）</a></span><a href="https://morilab-garage.com/projects/web-interval-timer/">制作の背景・技術構成</a><a href="https://morilab-garage.com/projects/">ほかの制作物</a><a href="https://morilab-garage.com/privacy/">プライバシーポリシー</a></p>
+</section>
 </body>
 </html>

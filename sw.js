@@ -1,5 +1,5 @@
 // キャッシュするファイルの名前とバージョンを定義
-const CACHE_NAME = 'interval-timer-cache-v3';
+const CACHE_NAME = 'interval-timer-cache-v4';
 
 // キャッシュするファイルのリスト
 const urlsToCache = [
