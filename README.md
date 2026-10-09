@@ -40,3 +40,7 @@ https://interval-timer.morilab-garage.com/
 
 このプロジェクトは MITライセンス の下で公開されています。
 
+## 紹介ページ
+
+- [制作物ページ（Mori Lab）](https://morilab-garage.com/projects/web-interval-timer/)
+- [開発ブログ記事（はてなブログ）](https://mementomori7272.hatenablog.com/entry/2025/09/17/183052)
